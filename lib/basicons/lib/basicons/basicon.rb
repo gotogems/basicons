@@ -1,5 +1,11 @@
 module Basicons
   class Basicon
+    SVG_SIZES = {
+      small: 16,
+      medium: 32,
+      large: 64
+    }.freeze
+
     attr_reader :data, :size
     attr_reader :symbol, :options
 
@@ -17,6 +23,7 @@ module Basicons
           fill: 'none'
         })
 
+        @options.delete(:size)
         @options['stroke-width'] = 2
         @options['stroke-linecap'] = 'round'
         @options['stroke-linejoin'] = 'round'
@@ -39,8 +46,15 @@ module Basicons
 
     def svg_size
       return @size unless @size.nil?
+
       @size = @options[:size].to_i
-      @size = 16 if @size.zero?
+      value = @options[:size].to_s
+
+      if value.match?(/small|medium|large/)
+        @size = SVG_SIZES[value.to_sym]
+      end
+
+      @size = 24 if @size.zero?
       @size
     end
 
