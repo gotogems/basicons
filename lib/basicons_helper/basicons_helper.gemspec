@@ -5,10 +5,10 @@ Gem::Specification.new do |s|
   s.version       = BasiconsHelper::VERSION
   s.summary       = 'Rails basicons helper'
   s.homepage      = 'https://basicons.xyz'
-  s.authors       = ['Basicons Team']
+  s.authors       = 'razeos at tossdev'
   s.files         = Dir['lib/**/*']
-  s.require_paths = ['lib']
   s.license       = 'MIT'
+  s.require_paths = ['lib']
 
   s.add_dependency 'basicons', '~> 1.0'
   s.add_dependency 'railties', '~> 7.0'
